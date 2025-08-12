@@ -2,8 +2,102 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# 페이지 설정
-st.set_page_config(page_title='코로나19 한국 대시보드', layout='wide')
+# 페이지 설정 - 밝은 테마 적용
+st.set_page_config(
+    page_title='코로나19 한국 대시보드', 
+    layout='wide',
+    initial_sidebar_state='expanded'
+)
+
+# 커스텀 CSS로 더 밝고 깔끔한 디자인 적용
+st.markdown("""
+<style>
+    .main {
+        background-color: #ffffff;
+        color: #333333;
+    }
+    .stApp {
+        background-color: #f8f9fa;
+    }
+    .stTitle {
+        color: #2c3e50;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px 0;
+        background: linear-gradient(90deg, #3498db, #2980b9);
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+    .stSubheader {
+        color: #34495e;
+        font-weight: 600;
+        border-left: 4px solid #3498db;
+        padding-left: 15px;
+        margin: 20px 0 15px 0;
+    }
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: #ecf0f1;
+        border-radius: 8px;
+        padding: 5px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        background-color: #ffffff;
+        border-radius: 6px;
+        color: #2c3e50;
+        font-weight: 500;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #3498db;
+        color: white;
+    }
+    .stSelectbox, .stMultiselect {
+        background-color: #ffffff;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+    }
+    .stSelectbox:focus, .stMultiselect:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+    .stButton > button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .stButton > button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    }
+    .stMetric {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        border: 2px solid #e9ecef;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .stDataFrame {
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .stInfo {
+        background-color: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+        border-radius: 8px;
+        padding: 15px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 st.title('KR 코로나 19 한국 감염자 대시보드')
 
 # 파일 업로드 - csv파일만 
